@@ -1,0 +1,72 @@
+/*
+// Created: July 4, 2017; 3:55 AM
+// Author: Jonathan Gryn
+// Revisions: Jon (7/3/17) - Added style    
+*/
+
+body {
+  background-image: url("../images/background.png");
+}
+div {
+  background-color: white;
+  margin: 10px;
+  width: 25%;
+}
+div {
+  border: solid 2px antiqueWhite;
+  padding: 10px;
+}
+h1, h3, span {
+  font-weight: bold;
+  text-align: center;
+}
+h1 {
+  font-size: 30pt;
+}
+ol {
+  list-style: decimal inside;
+}
+ul {
+  list-style: disc inside;
+  text-indent: 20px;
+}
+
+/* Specific Elements */
+div.header, div.gems {
+  background-color: #e0e0eb;
+}
+div.header, div.instructions {
+  width: 50%;
+}
+
+/* Classes */
+.numberToMatch, .winsAndLosses {
+  float: left;
+  width: 15%;
+  height: 60px;
+}
+.userTotal {
+  width: 15%;
+  height: 60px;
+}
+.gems {
+  clear: both;
+}
+.genImage {
+  height: 60px;
+  margin: 10px;
+}
+
+/* IDs */
+#blue {
+  color: #3092c7;
+}
+#green {
+  color: #00aa59;
+}
+#red {
+  color: #ec4b5f;
+}
+#yellow {
+  color: #ffc225;
+}
