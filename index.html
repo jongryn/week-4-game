@@ -1,74 +1,139 @@
 <!-- Created: July 3, 2017; 12:25 PM
 Author: Jonathan Gryn
 Revisions: Jon (7/3/17) - Added html
-           Jon (7/4/17) - Added addtional html-->
+           Jon (7/4/17) - Added addtional html
+           Jon (9/5/17) - Adjusting html to format correctly-->
 
 <!DOCTYPE html>
 <html>
-<head lang="en-US">
+<head lang="en">
   <meta charset="UTF-8">
   <title>Crystal Collector</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 </head>
 <body>
 
-  <div class="header">
-    <h1>Crystal Collector</h1>
+  <div class="container">
+
+    <!-- Crystla Collector Jumbotron -->
+    <div class="jumbotron" style="background-color: purple; color:white;">
+      <div class="container">
+        <h1 class="text-center"><strong>Crystal Collector</strong></h1>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- Instructions Container -->
+      <div class="col-lg-12">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Instructions</h3>
+          </div>
+          <div class="panel-body">
+            <p><small>You will be given a random number at the start of the game. There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score. You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number. The value of each crystal is hidden form you until you click on it. Each time when the game starts, the game will change the values of each crystal.</small></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Score and Crystals -->
+    <div class="row">
+
+      <!-- Target Score -->
+      <div class="col-lg-3">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Target Score</h3>
+          </div>
+          <div class="panel-body">
+            <h3 class="text-center" id="targetScore"></h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your Score -->
+      <div class="col-lg-3">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Your Score</h3>
+          </div>
+          <div class="panel-body">
+            <h3 class="text-center" id="yourScore"></h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Crystals -->
+      <div class="col-lg-6">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Crystal Selections</h3>
+          </div>
+          <div class="panel-body text-center">
+            <img src="assets/images/blue.png" alt="" id="blue">
+            <img src="assets/images/green.png" alt="" id="green">
+            <img src="assets/images/red.png" alt="" id="red">
+            <img src="assets/images/yellow.png" alt="" id="yellow">
+          </div>
+        </div>
+
+      </div>
+        
+
+    </div>
+
+    <!-- Counters Row -->
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Win Count</h3>
+          </div>
+          <div class="panel-body">
+            <h3 class="text-center" id="winCount">0</h3>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Loss Count</h3>
+          </div>
+          <div class="panel-body">
+            <h3 class="text-center" id="lossCount">0</h3>
+          </div>
+        </div>
+      </div>
+        
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="instructions">
-    <h3>Here's how you play the game</h3>
+  <!-- jQuery -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 
-    </br>
+  <!-- Main Game Logic -->
+  <script src="assets/javascript/logic.js"></script>
 
-    <ol>
-      <li>You will be given a random number at the start of the game.<span>"Number To Get"</span></li>
-      <li>There are four crystals below.</li>
-      <ul>
-        <li id="blue">Blue</li>
-        <li id="green">Green</li>
-        <li id="red">Red</li>
-        <li id="yellow">Yellow</li>
-      </ul>
-      <li>By clicking on a crystla, you will ad a specific amount of points to your total score.</li>
-      <li>You win the game by matching your total score to the random number.</li>
-      <li>You lose the game if your total score goes above the random number.</li>
-      <li>The value of each crystal is hidden from you until you click on it.</li>
-      <li>Each time when the game starts, the game will change the values of each crystal.</li>
-    </ol>
-  </div>
 
-  <div class="numberToMatch">
-    <h2>Number To Get:
-      <span id="randomNumber"></span>
-    </h2>
-  </div>
-
-  <div class="winsAndLosses">
-    <h2>Wins:
-      <span id="numberWins"></span>
-      </br>
-      Losses:
-      <span id="numberLosses"></span>
-    </h2>
-  </div>
-
-  <div class="gems">
-    <img src="assets/images/blue.png" class="gemImage" id="one" alt="blue gem">
-    <img src="assets/images/green.png" class="gemImage" id="two" alt="green gem">
-    <img src="assets/images/red.png" class="genImage" id="three" alt="red gem">
-    <img src="assets/images/yellow.png" class="genImage" id="four" alt="yellow gem">
-  </div>
-
-  <div class="userTotal">
-    <h2>Your total score is:
-      <span id="finalTotal"></span>
-    </h2>
-  </div>
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
-  <script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>
 </html>
